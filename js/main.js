@@ -202,11 +202,15 @@ beLiekanos(-18, 18, 7);
 console.log('-------------------------------');
 
 function daugyba( a, b ){
-
     // jeigu a nera skaicius - return
     if ( typeof(a) !== 'number' || isNaN(a) || !isFinite(a) ) {
         return 'Pirmas parametras nera skaicius';
     }
+
+    // if ( b === undefined ) {
+    //     return a * a;
+    // }
+
     // jeigu b nera skaicius - return
     if ( typeof(b) !== 'number' || isNaN(b) || !isFinite(b) ) {
         return 'Antras parametras nera skaicius';
@@ -236,3 +240,175 @@ console.log( daugyba(NaN, NaN) );
 console.log( daugyba(Infinity, 5) );
 console.log( daugyba(5, Infinity) );
 console.log( daugyba(Infinity, Infinity) );
+console.log( daugyba(5) );
+
+
+console.log('-------------------------------');
+
+function skaitmenuKiekisSkaiciuje( skaicius ){
+    var kiekis = 0,
+        tekstinis = ''+skaicius;
+    
+    if ( typeof(skaicius) !== 'number' ||
+         isNaN(skaicius) ||
+         !isFinite(skaicius)) {
+        return skaicius+": "+ 'Pateikta netinkamo tipo reikšmė.';
+    }
+
+    // skaiciuojame skaitmenu kieki skaiciuje
+    kiekis = tekstinis.length;
+
+    // -1 jeigu skaicius su kableliu
+    if ( skaicius % 1 !== 0 ) {
+        kiekis--;
+    }
+
+    // -1 jeigu neigiamas skaicius
+    if ( skaicius < 0 ) {
+        kiekis--;
+    }
+
+    return skaicius+": "+ kiekis;
+}
+
+console.log( skaitmenuKiekisSkaiciuje( 5 ) );
+console.log( skaitmenuKiekisSkaiciuje( 781 ) );
+console.log( skaitmenuKiekisSkaiciuje( 37060123456 ) );
+console.log( skaitmenuKiekisSkaiciuje( 3706.0123456 ) );
+console.log( skaitmenuKiekisSkaiciuje( .1 ) );
+console.log( skaitmenuKiekisSkaiciuje( 1e99 ) );
+console.log( skaitmenuKiekisSkaiciuje( -1.3454818E-99 ) );
+console.log( skaitmenuKiekisSkaiciuje( 1+skaicius1 ) );
+console.log( skaitmenuKiekisSkaiciuje( Math.PI ) );
+console.log( skaitmenuKiekisSkaiciuje( Math.E ) );
+console.log( skaitmenuKiekisSkaiciuje( 9+99 ) );
+console.log( skaitmenuKiekisSkaiciuje( true ) );
+console.log( skaitmenuKiekisSkaiciuje( 'asd' ) );
+console.log( skaitmenuKiekisSkaiciuje( NaN ) );
+console.log( skaitmenuKiekisSkaiciuje( Infinity ) );
+console.log( skaitmenuKiekisSkaiciuje( '516165' ) );
+console.log( skaitmenuKiekisSkaiciuje( [] ) );
+console.log( skaitmenuKiekisSkaiciuje(  ) );
+console.log( skaitmenuKiekisSkaiciuje( null ) );
+console.log( skaitmenuKiekisSkaiciuje( undefined ) );
+console.log( skaitmenuKiekisSkaiciuje( 1+'2' ) );
+console.log( skaitmenuKiekisSkaiciuje( 1+(+'2') ) );
+console.log( skaitmenuKiekisSkaiciuje( +'2' + 8 ) );
+console.log( skaitmenuKiekisSkaiciuje( 0 ) );
+console.log( skaitmenuKiekisSkaiciuje( +0 ) );
+console.log( skaitmenuKiekisSkaiciuje( -0 ) );
+console.log( skaitmenuKiekisSkaiciuje( -0.000000000000 ) );
+console.log( skaitmenuKiekisSkaiciuje( -1 ) );
+console.log( skaitmenuKiekisSkaiciuje( -1.23 ) );
+console.log( skaitmenuKiekisSkaiciuje( 0.1 + 0.2 ) );
+
+
+console.log('-------------------------------');
+
+function didziausiasSkaiciusSarase( sarasas ) {
+    var didziausias = -Infinity;
+
+    if ( !Array.isArray(sarasas) ) {
+        return 'Pateikta netinkamo tipo reikšmė.';
+    }
+
+    if ( sarasas.length === 0 ) {
+        return 'Pateiktas sąrašas negali būti tuščias.';
+    }
+
+    console.log( sarasas );
+
+    // ieskau didziausio
+    for ( var i=0; i<sarasas.length; i++ ) {
+        // einame prie kito saraso elemento, jei enamasis nera skaicius
+        if ( typeof( sarasas[i] ) !== 'number' ||
+             !isFinite( sarasas[i] ) ) {
+            continue;
+        }
+        // randu didesni -> atnaujinu
+        if ( sarasas[i] > didziausias ) {
+            didziausias = sarasas[i];
+        }
+    }
+
+    if ( isFinite(didziausias) ) {
+        return didziausias;
+    } else {
+        return 'Sarase nera nei vieno normalaus skaiciaus.';
+    }
+}
+
+console.log( didziausiasSkaiciusSarase(  ) );
+console.log( didziausiasSkaiciusSarase( 'pomidoras' ) );
+console.log( didziausiasSkaiciusSarase( [] ) );
+console.log( didziausiasSkaiciusSarase( 1 ) );
+console.log( didziausiasSkaiciusSarase( true ) );
+console.log( didziausiasSkaiciusSarase( false ) );
+console.log( didziausiasSkaiciusSarase( NaN ) );
+console.log( didziausiasSkaiciusSarase( Infinity ) );
+console.log( didziausiasSkaiciusSarase( null ) );
+console.log( didziausiasSkaiciusSarase( undefined ) );
+console.log( didziausiasSkaiciusSarase( {} ) );
+console.log( didziausiasSkaiciusSarase( [ 1 ] ) );
+console.log( didziausiasSkaiciusSarase( [ 1, 2, 3 ] ) );
+console.log( didziausiasSkaiciusSarase( [ -5, 78, 14, 0, 18 ] ) );
+console.log( didziausiasSkaiciusSarase( [ 69, 69, 69, 69, 66 ] ) );
+console.log( didziausiasSkaiciusSarase( [ -1, -2, -3, -4, -5, -6, -7, -8 ] ) );
+console.log( didziausiasSkaiciusSarase( [ -5, '78', Infinity, NaN, 0, 18 ] ) );
+console.log( didziausiasSkaiciusSarase( [ NaN ] ) );
+
+
+console.log('-------------------------------');
+
+function isrinktiRaides( text, position ) {
+    // abcdef - 3   =>  cf
+    // abcdef - 2   =>  bdf
+    // abcdef - 1   =>  abcdef
+    // abcdef - 0   =>  aaaaaaaaaaaaaaaaaaaa...
+
+    console.log( text+': '+position );
+    var finalSentence = '',
+        count = text.length;
+
+    if ( typeof( text ) !== 'string' ) {
+        return 'Pirmasis kintamasis yra netinkamo tipo.';
+    }
+
+    if ( typeof( position ) !== 'number' ||
+         !isFinite(position) ) {
+        return 'Antrasis kintamasis yra netinkamo tipo.';
+    }
+
+    if ( position % 1 !== 0 ) {
+        return 'Antrasis kintamasis turi buti sveikasis skaicius';
+    }
+
+    if ( count < position ) {
+        return 'Antrasis kintamasis turi būti ne didesnis už pateikto teksto ilgį.';
+    }
+
+    if ( position < 1 ) {
+        return 'Antrasis kintamasis turi būti didesnis už nulį.';
+    }
+
+    for ( var i=0; i<count; i=i+.1 ) {
+
+    }
+
+    console.log(i);
+    
+
+    return finalSentence;
+}
+
+console.log( isrinktiRaides( 1561, 2 ) );
+console.log( isrinktiRaides( "abc", NaN ) );
+console.log( isrinktiRaides( "abc", 'NaN' ) );
+console.log( isrinktiRaides( "abc", 1.5 ) );
+console.log( isrinktiRaides( "abc", '1' ) );
+console.log( isrinktiRaides( "abc", 0 ) );
+console.log( isrinktiRaides( "", 2 ) );
+console.log( isrinktiRaides( "abc", 4 ) );
+console.log( isrinktiRaides( "abcdefg", -2 ) );
+console.log( isrinktiRaides( "abcdefg", 2 ) );
+console.log( isrinktiRaides( "abcdefghijkl", 3 ) );
