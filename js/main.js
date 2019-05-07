@@ -412,3 +412,42 @@ console.log( isrinktiRaides( "abc", 4 ) );
 console.log( isrinktiRaides( "abcdefg", -2 ) );
 console.log( isrinktiRaides( "abcdefg", 2 ) );
 console.log( isrinktiRaides( "abcdefghijkl", 3 ) );
+
+
+console.log('-------------------------------');
+
+function dalyba( a, b ){
+    if ( a === undefined || b === undefined ) {
+        return 'Dalyba galima tik tarp dvieju reiksmiu.';
+    }
+    if ( !isFinite(a) ||
+         isNaN(a) ||
+         typeof(a) !== 'number' ) {
+        return 'Pirmas parametras nera normalus skaicius.';
+    }
+    if ( !isFinite(b) ||
+         isNaN(b) ||
+         typeof(b) !== 'number' ) {
+        return 'Antras parametras nera normalus skaicius.';
+    }
+    if ( b === 0 ) {
+        return 'Negalima dalyba is nulio.';
+    }
+    return a / b;
+}
+
+console.log( dalyba() );
+console.log( dalyba(2) );
+console.log( dalyba(8, 0) );
+console.log( dalyba('8', 2) );
+console.log( dalyba(8, '2') );
+console.log( dalyba(8, NaN) );
+console.log( dalyba(8, Infinity) );
+
+console.log( dalyba(8, 2) );
+console.log( dalyba(-8, 2) );
+console.log( dalyba(8, -2) );
+console.log( dalyba(-8, -2) );
+console.log( dalyba(0, 2) );
+console.log( dalyba(1, 1/2) );
+console.log( dalyba(1/3, 3) );
